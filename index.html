@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sea Cucumber (SCC)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background: url('header-background.jpeg') no-repeat center center/cover;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+        }
+
+        h1 {
+            font-size: 4em;
+            font-weight: bold;
+            color: #FFFFFF; /* More visible text */
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background: url('central-background.jpeg') no-repeat center center/cover; /* Set image here */
+            background-size: cover;
+            padding: 40px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            background-color: #00B5B8;
+            color: white;
+            font-size: 1.2em;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #01999a;
+        }
+
+        .tokenomics-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+        }
+
+        .tokenomics-content {
+            width: 45%;
+        }
+
+        .pie-chart {
+            width: 45%;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-links a {
+            margin: 0 15px;
+            color: #00B5B8;
+            font-size: 1.5em;
+            text-decoration: none;
+        }
+
+        .social-links img {
+            width: 40px;
+            height: 40px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Add margin to avoid content sticking to the top */
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to Sea Cucumber (SCC)</h1>
+    <p>Your ticket to the ocean of possibilities!</p>
+    <a href="https://raydium.io/swap/?inputMint=sol&outputMint=mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So" class="btn" target="_blank">Buy SCC Now</a>
+</header>
+
+<div class="container">
+    <section id="about">
+        <h2>About Sea Cucumber (SCC)</h2>
+        <p>Sea Cucumber (SCC) is not just a token; it’s a movement inspired by the vast and mysterious depths of the ocean. Just like the sea cucumber plays a crucial role in maintaining the health of our marine ecosystems, SCC aims to contribute to the future of decentralized finance. With a limited supply and the power of community behind it, SCC will thrive!</p>
+    </section>
+
+    <section id="tokenomics">
+        <h2>Tokenomics</h2>
+        <div class="tokenomics-container">
+            <div class="tokenomics-content">
+                <h3><strong>Total Supply:</strong> 10 Billion SCC</h3>
+                <ul>
+                    <li><strong>🌐 Liquidity Pool:</strong> 30% (3 Billion SCC)</li>
+                    <li><strong>🚀 Marketing & Partnerships:</strong> 10% (1 Billion SCC)</li>
+                    <li><strong>🛠️ Development Fund:</strong> 10% (1 Billion SCC)</li>
+                    <li><strong>🎉 Community Incentives:</strong> 20% (2 Billion SCC)</li>
+                    <li><strong>🔒 Team Wallet (Locked):</strong> 10% (1 Billion SCC)</li>
+                </ul>
+            </div>
+            <div class="pie-chart">
+                <!-- Canvas for the Pie Chart -->
+                <canvas id="tokenomicsChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap">
+        <h2>Roadmap</h2>
+        <ul>
+            <li><strong>Q1 2025:</strong> Launch of Sea Cucumber Token (SCC), Community Building</li>
+            <li><strong>Q2 2025:</strong> Listing on decentralized exchanges, Start of marketing campaigns</li>
+            <li><strong>Q3 2025:</strong> Expand community incentives, Strategic partnerships</li>
+            <li><strong>Q4 2025:</strong> Further ecosystem development, explore cross-chain options</li>
+        </ul>
+    </section>
+
+    <section id="socials">
+        <h2>Join the Sea Cucumber Community</h2>
+        <div class="social-links">
+            <a href="https://x.com/cucumbersea2021" target="_blank">
+                <img src="x-logo.png" alt="X Logo">
+            </a>
+            <a href="https://t.me/SeaCucumberSCC" target="_blank">
+                <img src="telegram-logo.png" alt="Telegram Logo">
+            </a>
+        </div>
+    </section>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2025 Sea Cucumber. All rights reserved.</p>
+</footer>
+
+<script>
+// Data for the Pie Chart
+var data = {
+    labels: ['🌐 Liquidity Pool', '🚀 Marketing & Partnerships', '🛠️ Development Fund', '🎉 Community Incentives', '🔒 Team Wallet (Locked)'],
+    datasets: [{
+        label: 'Token Distribution',
+        data: [30, 10, 10, 20, 10], // The percentage values
+        backgroundColor: ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'],
+        hoverOffset: 4
+    }]
+};
+
+// Pie Chart Configuration
+var config = {
+    type: 'pie',
+    data: data,
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        var percentage = tooltipItem.raw;
+                        return tooltipItem.label + ': ' + percentage + '%';
+                    }
+                }
+            }
+        }
+    }
+};
+
+// Render the Chart
+var ctx = document.getElementById('tokenomicsChart').getContext('2d');
+var tokenomicsChart = new Chart(ctx, config);
+</script>
+
+</body>
+</html>
